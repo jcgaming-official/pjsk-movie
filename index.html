@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Branches</title>
+</head>
+<body>
+  <h1>Find Movie Branches</h1>
+  <button onclick="fetchBranches()">Get Branches</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function fetchBranches() {
+      const response = await fetch("http://127.0.0.1:5000/getbranches", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          movieName: "COLORFUL STAGE! THE MOVIE: A MIKU WHO CAN'T SING"
+        })
+      });
+
+      const data = await response.json();
+      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
