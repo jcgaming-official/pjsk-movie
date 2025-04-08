@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import requests
 from flask_cors import CORS
 import os
@@ -6,9 +6,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+# Root route to serve the index.html from the 'templates' folder
 @app.route('/')
 def index():
-    return "Welcome to the Movie Branches API. Use /getbranches to fetch movie branches."
+    return render_template('index.html')  # Flask will automatically look for 'index.html' in the 'templates' folder
 
 @app.route('/getbranches', methods=['POST'])
 def get_branches():
