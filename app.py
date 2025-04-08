@@ -6,6 +6,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def index():
+    return "Welcome to the Movie Branches API. Use /getbranches to fetch movie branches."
+
 @app.route('/getbranches', methods=['POST'])
 def get_branches():
     url = "https://www.robinsonsmovieworld.com/webservice/getbranchesbymovienewadvance"
